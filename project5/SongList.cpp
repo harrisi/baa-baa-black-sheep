@@ -8,11 +8,11 @@
 
 #include "SongList.hpp"
 
-Song::Song() {
-  title = new char;
-  artist = new char;
-  album = new char;
-}
+//Song::Song() {
+//  title = new char;
+//  artist = new char;
+//  album = new char;
+//}
 
 Song::~Song() {
   delete title;
@@ -28,6 +28,9 @@ SongList::SongList() {
 void SongList::add(Song *song) {
   if (!head->next) { // head is null, insert here
     head->data = new Song;
+    head->data->title = new char[strlen(song->title)];
+    head->data->artist = new char[strlen(song->artist)];
+    head->data->album = new char[strlen(song->album)];
     head->data = song;
 //    head->data->title = song->title;
 //    head->data->artist = song->artist;
@@ -38,6 +41,9 @@ void SongList::add(Song *song) {
     head->prev = NULL;
   } else if (!tail->prev) {
     tail->data = new Song;
+    tail->data->title = new char[strlen(song->title)];
+    tail->data->artist = new char[strlen(song->artist)];
+    tail->data->album = new char[strlen(song->album)];
     tail->data = song;
 //    tail->data->title = song->title;
 //    tail->data->artist = song->artist;
@@ -49,6 +55,9 @@ void SongList::add(Song *song) {
   } else {
     SongNode *tmp = new SongNode;
     tmp->data = new Song;
+    tmp->data->title = new char[strlen(song->title)];
+    tmp->data->artist = new char[strlen(song->artist)];
+    tmp->data->album = new char[strlen(song->album)];
     tmp->data = song;
 //    tmp->data->title = tail->data->title;
 //    tmp->data->artist = tail->data->artist;

@@ -25,24 +25,22 @@ void loadFile(SongList& song_list, const char *delim) {
     // XXX: Define error numbering properly.
     exit(1);
   }
+  Song *tmp = new Song;
   
   while (f.getline(in, std::numeric_limits<std::streamsize>::max())) {
-    Song *tmp = new Song;
     if (f.eof()) break;
     token = strtok(in, delim);
-    //std::cout << "title: " << token << '\n';
+    tmp->title = new char[strlen(token)];
     strncpy(tmp->title, token, strlen(token));
     token = strtok(nullptr, delim);
-    //std::cout << "artist: " << token << '\n';
+    tmp->artist = new char[strlen(token)];
     strncpy(tmp->artist, token, strlen(token));
     token = strtok(nullptr, delim);
-    //std::cout << "minutes: " << token << '\n';
     tmp->minutes = atoi(token);
     token = strtok(nullptr, delim);
-    //std::cout << "seconds: " << token << '\n';
     tmp->seconds = atoi(token);
     token = strtok(nullptr, delim);
-    //std::cout << "album: " << token << '\n';
+    tmp->album = new char[strlen(token)];
     strncpy(tmp->album, token, strlen(token));
     song_list.add(tmp);
   }

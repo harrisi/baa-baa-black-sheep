@@ -21,7 +21,7 @@ public: // XXX: Set to private.
   unsigned int minutes;
   unsigned int seconds;
 public:
-  Song();
+//  Song();
   char *getTitle();
   void setTitle(const char *);
   char *getArtist();
